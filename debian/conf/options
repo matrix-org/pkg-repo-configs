@@ -1,0 +1,7 @@
+# don't delete old debs by default
+keepunreferencedfiles
+
+# do prompt for a passphrase when signing
+ask-passphrase
+
+outdir +b/../packages.matrix.org/debian
