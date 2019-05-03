@@ -54,3 +54,11 @@ Architectures: amd64 i386 source
 Components: main
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# disco has support until january 2020
+Origin: matrix.org
+Codename: disco
+Architectures: amd64 i386 source
+Components: main
+SignWith: F473DD4473365DE1
+Tracking: minimal
