@@ -1,4 +1,4 @@
 Name: incoming
 IncomingDir: incoming
 TempDir: tmp
-Allow: jessie stretch buster sid xenial bionic cosmic disco
+Allow: stretch buster sid xenial bionic cosmic disco

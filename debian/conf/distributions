@@ -1,13 +1,3 @@
-# jessie is in LTS since June 2018 (until June 2020)
-Origin: matrix.org
-Codename: jessie
-Architectures: amd64 i386 source
-Components: main
-SignWith: F473DD4473365DE1
-Tracking: minimal
-Update: jessie-backports
-
-# jessie has LTS suport until June 2020
 Origin: matrix.org
 Codename: stretch
 Architectures: amd64 i386 source
