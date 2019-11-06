@@ -14,6 +14,14 @@ Components: main
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
+# bullseye is debian testing as of 2019
+Origin: matrix.org
+Codename: bullseye
+Architectures: amd64 i386 source
+Components: main
+SignWith: F473DD4473365DE1
+Tracking: minimal
+
 Origin: matrix.org
 Codename: sid
 Architectures: amd64 i386 source
