@@ -69,3 +69,11 @@ Architectures: amd64 i386 source
 Components: main
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# focal is LTS so has support until april 2025
+Origin: matrix.org
+Codename: focal
+Architectures: amd64 i386 source
+Components: main
+SignWith: F473DD4473365DE1
+Tracking: minimal
