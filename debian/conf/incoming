@@ -1,4 +1,4 @@
 Name: incoming
 IncomingDir: incoming
 TempDir: tmp
-Allow: stretch buster bullseye sid xenial bionic cosmic disco eoan focal
+Allow: stretch buster bullseye sid xenial bionic eoan focal

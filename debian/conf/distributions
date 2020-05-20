@@ -46,22 +46,6 @@ Components: main
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
-# cosmic has support until july 2019
-Origin: matrix.org
-Codename: cosmic
-Architectures: amd64 i386 source
-Components: main
-SignWith: F473DD4473365DE1
-Tracking: minimal
-
-# disco has support until january 2020
-Origin: matrix.org
-Codename: disco
-Architectures: amd64 i386 source
-Components: main
-SignWith: F473DD4473365DE1
-Tracking: minimal
-
 # eoan has support until july 2020
 Origin: matrix.org
 Codename: eoan
