@@ -77,3 +77,11 @@ Architectures: amd64 i386 source
 Components: main
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# groovy has support until july 2021
+Origin: matrix.org
+Codename: groovy
+Architectures: amd64 i386 source
+Components: main
+SignWith: F473DD4473365DE1
+Tracking: minimal
