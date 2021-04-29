@@ -85,3 +85,11 @@ Architectures: amd64 i386 source
 Components: main
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# hirsute (21.04) reaches EOL on 2021-07-07
+Origin: matrix.org
+Codename: hirsute
+Architectures: amd64 source
+Components: main
+SignWith: F473DD4473365DE1
+Tracking: minimal
