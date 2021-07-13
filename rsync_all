@@ -1,3 +1,10 @@
 #!/bin/sh
 cd `dirname "$0"`
-exec rsync -e ssh -avz packages.matrix.org matrix@athena.matrix.org: "$@"
+
+# seems we can't set dir mtimes unless we own them, hence --omit-dir-times
+exec rsync -e ssh \
+     --omit-dir-times -avz \
+     --chown :matrix --chmod=g+w \
+     --exclude 'debian/incoming/*' \
+     debian packages.matrix.org athena.int.matrix.org:~matrix/ \
+     "$@"
