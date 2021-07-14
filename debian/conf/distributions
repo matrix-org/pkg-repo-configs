@@ -2,7 +2,7 @@
 Origin: matrix.org
 Codename: stretch
 Architectures: amd64 i386 source
-Components: main
+Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
@@ -10,7 +10,7 @@ Tracking: minimal
 Origin: matrix.org
 Codename: buster
 Architectures: amd64 i386 source
-Components: main
+Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
@@ -18,14 +18,14 @@ Tracking: minimal
 Origin: matrix.org
 Codename: bullseye
 Architectures: amd64 i386 source
-Components: main
+Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
 Origin: matrix.org
 Codename: sid
 Architectures: amd64 i386 source
-Components: main
+Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
@@ -33,7 +33,7 @@ Tracking: minimal
 Origin: matrix.org
 Codename: xenial
 Architectures: amd64 i386 source
-Components: main
+Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 Update: xenial-jessie-backports xenial-stretch
@@ -42,7 +42,7 @@ Update: xenial-jessie-backports xenial-stretch
 Origin: matrix.org
 Codename: bionic
 Architectures: amd64 i386 source
-Components: main
+Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
@@ -50,7 +50,7 @@ Tracking: minimal
 Origin: matrix.org
 Codename: cosmic
 Architectures: amd64 i386 source
-Components: main
+Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
@@ -58,7 +58,7 @@ Tracking: minimal
 Origin: matrix.org
 Codename: disco
 Architectures: amd64 i386 source
-Components: main
+Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
@@ -66,7 +66,7 @@ Tracking: minimal
 Origin: matrix.org
 Codename: eoan
 Architectures: amd64 i386 source
-Components: main
+Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
@@ -74,7 +74,7 @@ Tracking: minimal
 Origin: matrix.org
 Codename: focal
 Architectures: amd64 i386 source
-Components: main
+Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
@@ -82,14 +82,14 @@ Tracking: minimal
 Origin: matrix.org
 Codename: groovy
 Architectures: amd64 i386 source
-Components: main
+Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
-# hirsute (21.04) reaches EOL on 2021-07-07
+# hirsute (21.04) reaches EOL in January 2022
 Origin: matrix.org
 Codename: hirsute
 Architectures: amd64 source
-Components: main
+Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
