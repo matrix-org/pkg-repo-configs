@@ -1,8 +1,0 @@
-#!/bin/sh
-cd `dirname "$0"`
-
-exec rsync -e ssh \
-     --omit-dir-times -avz \
-     --chown :matrix --chmod=g+w \
-     packages.matrix.org/debian/pool athena.int.matrix.org:~matrix/packages.matrix.org/debian \
-     "$@"

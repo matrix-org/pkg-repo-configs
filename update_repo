@@ -1,0 +1,192 @@
+#!/usr/bin/env python3
+#
+# Copyright 2021 The Matrix.org Foundation C.I.C.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+"""An interactive script for updating the packages.matrix.org debian repository."""
+from typing import Sequence
+import os.path
+import subprocess
+
+import attr
+
+import click
+
+root_dir = os.path.abspath(os.path.dirname(__file__))
+
+
+@attr.s(auto_attribs=True)
+class Options:
+    remote_location: str
+    local_db_location: str
+    local_repo_location: str
+    verbose: int
+
+
+@click.group(invoke_without_command=True)
+@click.option(
+    "--remote-location",
+    default="athena.int.matrix.org:/home/matrix",
+    help="The remote location of the repository.",
+    show_default=True,
+    metavar="PATH",
+)
+@click.option(
+    "--local-db-location",
+    default=os.path.join(root_dir, "debian"),
+    help="The location of the local reprepro database.",
+    show_default=True,
+    metavar="PATH",
+)
+@click.option(
+    "--local-repo-location",
+    default=os.path.join(root_dir, "packages.matrix.org"),
+    help="The location of the local copy of the public packages repository.",
+    show_default=True,
+    metavar="PATH",
+)
+@click.option(
+    "--verbose",
+    "-v",
+    count=True,
+    help="Increase verbosity.",
+)
+@click.pass_context
+def run(ctx: click.Context, **kwargs):
+    """An interactive script to update the repository at
+    https://packages.matrix.org/debian.
+
+    First updates the local copy of the reprepro database; then imports any new packages
+    in 'debian/incoming'. Finally uploads new packages and the updated database to the
+    server.
+    """
+    ctx.obj = Options(**kwargs)
+
+    # if no explicit subcommand was given, default to 'all'
+    if not ctx.invoked_subcommand:
+        ctx.invoke(run_all_subcommands)
+
+
+@run.command(name="all")
+@click.pass_context
+def run_all_subcommands(ctx: click.Context):
+    """Run all the commands below. The default if no explicit subcommand is given."""
+    ctx.invoke(sync_local_database)
+    ctx.invoke(process_incoming)
+    ctx.invoke(publish_repo)
+
+
+@run.command()
+@click.option("--dry-run", "-n", help="just show what would be copied", is_flag=True)
+@click.pass_obj
+def sync_local_database(opts: Options, dry_run: bool):
+    """Update the local copy of the reprepro database."""
+    click.secho(
+        f"Updating local reprepro database at {opts.local_db_location}...",
+        fg="green",
+    )
+    args = (
+        "rsync",
+        "-essh",
+        "-rtz",
+        "--info=NAME",
+        opts.remote_location + "/debian/",
+        opts.local_db_location,
+    )
+    if dry_run:
+        args += ("-n",)
+    _run_command(opts, args)
+
+
+@run.command()
+@click.pass_obj
+def process_incoming(opts: Options):
+    """Import new packages in the 'incoming' directory."""
+    click.secho(
+        f"Importing new packages in {os.path.join(opts.local_db_location,'incoming')}...",
+        fg="green",
+    )
+    _run_command(
+        opts,
+        ("reprepro", "-v", "-b", opts.local_db_location, "processincoming", "incoming"),
+    )
+    click.secho("done", fg="green")
+
+
+@run.command()
+@click.pass_obj
+def publish_repo(opts: Options):
+    """Import new packages in the 'incoming' directory."""
+    click.secho("Publishing updated repository...", fg="green")
+
+    rsync_args = (
+        "rsync",
+        "-essh",
+        "--recursive",
+        "--perms",
+        "--times",
+        "--omit-dir-times",  # seems we can't set dir mtimes unless we own them
+        "--group",
+        "--chown",
+        ":matrix",
+        "--info=NAME",
+    )
+    packages_rsync_args = rsync_args + (
+        os.path.join(opts.local_repo_location, "debian", "pool"),
+        "/".join(opts.remote_location, os.path.basename(opts.local_repo_location), "debian"),
+    )
+    repo_rsync_args = rsync_args + (
+        opts.local_repo_location,
+        opts.remote_location
+    )
+    db_rsync_args = rsync_args + (
+        "--exclude",
+        "incoming/*",
+        opts.local_db_location,
+        opts.remote_location,
+    )
+
+    click.secho(f"The following files will be updated:")
+    # we don't report the packages rsync, as it's a subset of the repo one.
+    _run_command(opts, repo_rsync_args + ("-n",))
+    _run_command(opts, db_rsync_args + ("-n",))
+
+    click.confirm(click.style("Does that look correct?", fg="red"), abort=True)
+    click.secho("Uploading new package files...", fg="green")
+    _run_command(opts, packages_rsync_args)
+    click.secho("Uploading new repo metadata files...", fg="green")
+    _run_command(opts, repo_rsync_args)
+    click.secho("Updating reprepro database files...", fg="green")
+    _run_command(opts, db_rsync_args + ("-n",))
+
+    click.secho("done", fg="green")
+
+
+def _run_command(opts: Options, args: Sequence[str], *popenargs, **kwargs) -> None:
+    """Run the given command
+
+    Echoes the command if in verbose mode
+    """
+    if opts.verbose:
+        click.secho(" ".join(args), fg="yellow")
+
+    try:
+        subprocess.check_call(args, *popenargs, **kwargs)
+    except subprocess.CalledProcessError as e:
+        raise click.ClickException(e)
+
+
+if __name__ == "__main__":
+    run()
