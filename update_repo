@@ -128,7 +128,7 @@ def process_incoming(opts: Options):
 @run.command()
 @click.pass_obj
 def publish_repo(opts: Options):
-    """Import new packages in the 'incoming' directory."""
+    """Upload the updated repository and database."""
     click.secho("Publishing updated repository...", fg="green")
 
     rsync_args = (
@@ -141,11 +141,12 @@ def publish_repo(opts: Options):
         "--group",
         "--chown",
         ":matrix",
+        "--chmod=D0775,F0664",
         "--info=NAME",
     )
     packages_rsync_args = rsync_args + (
         os.path.join(opts.local_repo_location, "debian", "pool"),
-        "/".join(opts.remote_location, os.path.basename(opts.local_repo_location), "debian"),
+        "/".join((opts.remote_location, os.path.basename(opts.local_repo_location), "debian")),
     )
     repo_rsync_args = rsync_args + (
         opts.local_repo_location,
