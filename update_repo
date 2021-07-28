@@ -145,9 +145,12 @@ def process_incoming(opts: Options):
         f"Importing new packages in {os.path.join(opts.local_db_location,'incoming')}...",
         fg="green",
     )
+
+    # the first "-v" justmeans we show the reprepro command. Another -v inreases the reprepro verbosity.
+    verbose = "-V" if opts.verbose > 1 else "-vv"
     _run_command(
         opts,
-        ("reprepro", "-v", "-b", opts.local_db_location, "processincoming", "incoming"),
+        ("reprepro", verbose, "-b", opts.local_db_location, "processincoming", "incoming"),
     )
     click.secho("done", fg="green")
 
