@@ -100,7 +100,8 @@ def sync_local_database(opts: Options, dry_run: bool):
     args = (
         "rsync",
         "-essh",
-        "-rtz",
+        "--checksum",
+        "-rz",
         "--info=NAME",
         opts.remote_location + "/debian/",
         opts.local_db_location,
@@ -134,10 +135,9 @@ def publish_repo(opts: Options):
     rsync_args = (
         "rsync",
         "-essh",
+        "--checksum",
         "--recursive",
         "--perms",
-        "--times",
-        "--omit-dir-times",  # seems we can't set dir mtimes unless we own them
         "--group",
         "--chown",
         ":matrix",
