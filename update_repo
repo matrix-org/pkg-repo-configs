@@ -100,7 +100,8 @@ def sync_local_database(opts: Options, dry_run: bool):
     args = (
         "rsync",
         "-essh",
-        "-rtz",
+        "--checksum",
+        "-rz",
         "--info=NAME",
         opts.remote_location + "/debian/",
         opts.local_db_location,
@@ -109,6 +110,32 @@ def sync_local_database(opts: Options, dry_run: bool):
         args += ("-n",)
     _run_command(opts, args)
 
+    # we need to download the latest copy of the repo metadata ('Packages'
+    # etc).
+    #
+    # This is important because `reprepro processincoming` won't update
+    # any Packages files which aren't affected. So, for example, if we're
+    # uploading an RC, `buster/prerelease/binary-amd64/Packages` will be
+    # updated, while `buster/main/binary-amd64/Packages` might be very out of
+    # date.
+
+    local_dists_location = os.path.join(opts.local_repo_location, "debian", "dists")
+    click.secho(
+        f"Updating local copy of repo metadata at {local_dists_location}...",
+        fg="green",
+    )
+    args = (
+        "rsync",
+        "-essh",
+        "--checksum",
+        "-rz",
+        "--info=NAME",
+        "/".join((opts.remote_location, os.path.basename(opts.local_repo_location), "debian", "dists/")),
+        local_dists_location,
+    )
+    if dry_run:
+        args += ("-n",)
+    _run_command(opts, args)
 
 @run.command()
 @click.pass_obj
@@ -118,9 +145,12 @@ def process_incoming(opts: Options):
         f"Importing new packages in {os.path.join(opts.local_db_location,'incoming')}...",
         fg="green",
     )
+
+    # the first "-v" justmeans we show the reprepro command. Another -v inreases the reprepro verbosity.
+    verbose = "-V" if opts.verbose > 1 else "-vv"
     _run_command(
         opts,
-        ("reprepro", "-v", "-b", opts.local_db_location, "processincoming", "incoming"),
+        ("reprepro", verbose, "-b", opts.local_db_location, "processincoming", "incoming"),
     )
     click.secho("done", fg="green")
 
@@ -134,10 +164,9 @@ def publish_repo(opts: Options):
     rsync_args = (
         "rsync",
         "-essh",
+        "--checksum",
         "--recursive",
         "--perms",
-        "--times",
-        "--omit-dir-times",  # seems we can't set dir mtimes unless we own them
         "--group",
         "--chown",
         ":matrix",
