@@ -199,7 +199,7 @@ def publish_repo(opts: Options):
     click.secho("Uploading new repo metadata files...", fg="green")
     _run_command(opts, repo_rsync_args)
     click.secho("Updating reprepro database files...", fg="green")
-    _run_command(opts, db_rsync_args + ("-n",))
+    _run_command(opts, db_rsync_args)
 
     click.secho("done", fg="green")
 
