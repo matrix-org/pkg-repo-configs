@@ -1,4 +1,4 @@
-# eol for stretch is sometime in 2020
+# eol for stretch was 2020-07-06
 Origin: matrix.org
 Codename: stretch
 Architectures: amd64 i386 source
@@ -6,7 +6,7 @@ Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
-# buster was released in july 2019
+# buster was released 2019-07-06; eol ~2022-08
 Origin: matrix.org
 Codename: buster
 Architectures: amd64 i386 source
@@ -14,9 +14,17 @@ Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
-# bullseye is debian testing as of 2019
+# bullseye was released 2021-08-15; eol ~2024
 Origin: matrix.org
 Codename: bullseye
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
+
+# bookworm release is expected in ~Aug 2023
+Origin: matrix.org
+Codename: bookworm
 Architectures: amd64 i386 source
 Components: main prerelease
 SignWith: F473DD4473365DE1
@@ -29,7 +37,7 @@ Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
 
-# xenial has lts support until april 2021
+# xenial eol was april 2021
 Origin: matrix.org
 Codename: xenial
 Architectures: amd64 i386 source
