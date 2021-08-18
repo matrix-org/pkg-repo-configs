@@ -93,8 +93,9 @@ def run_all_subcommands(ctx: click.Context):
 @click.pass_obj
 def sync_local_database(opts: Options, dry_run: bool):
     """Update the local copy of the reprepro database."""
+    reprepro_db_location = os.path.join(opts.local_db_location, "db")
     click.secho(
-        f"Updating local reprepro database at {opts.local_db_location}...",
+        f"Updating local reprepro database at {reprepro_db_location}...",
         fg="green",
     )
     args = (
@@ -103,8 +104,8 @@ def sync_local_database(opts: Options, dry_run: bool):
         "--checksum",
         "-rz",
         "--info=NAME",
-        opts.remote_location + "/debian/",
-        opts.local_db_location,
+        opts.remote_location + "/debian/db/",
+        reprepro_db_location,
     )
     if dry_run:
         args += ("-n",)
