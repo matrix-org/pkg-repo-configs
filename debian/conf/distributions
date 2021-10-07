@@ -1,3 +1,11 @@
+# indri release expected ~October 2021
+Origin: matrix.org
+Codename: indri
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
+
 # eol for stretch was 2020-07-06
 Origin: matrix.org
 Codename: stretch
