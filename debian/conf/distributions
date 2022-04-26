@@ -1,3 +1,11 @@
+# jammy released 2022-04-21, EOL ~2027-04
+Origin: matrix.org
+Codename: jammy
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
+
 # indri release expected ~October 2021
 Origin: matrix.org
 Codename: impish
