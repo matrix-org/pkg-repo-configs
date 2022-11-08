@@ -117,3 +117,11 @@ Architectures: amd64 source
 Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# kinetic (22.10) reaches EOL in July 2023
+Origin: matrix.org
+Codename: kinetic
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
