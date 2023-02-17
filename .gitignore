@@ -4,3 +4,5 @@
 /packages.matrix.org/debian/pool
 /packages.matrix.org/npm/*/*.tgz
 /packages.matrix.org/npm/*/*.tgz.asc
+/matrix-org-archive-keyring.deb
+/matrix-org-archive-keyring/usr/share/keyrings/
