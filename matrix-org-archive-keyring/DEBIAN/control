@@ -1,0 +1,7 @@
+Package: matrix-org-archive-keyring
+Architecture: all
+Section: contrib/meta
+Maintainer: Synapse Packaging team <packages@matrix.org>
+Priority: optional
+Version: 1.0
+Description: The matrix.org package repository keyring
