@@ -20,7 +20,7 @@ read -p "Press any key to continue..."
 echo "Building deb..."
 # Ensure that we add the keyring with the right permissions.
 chmod u=rw,go=r matrix-org-archive-keyring/usr/share/keyrings/matrix-org-archive-keyring.gpg
-dpkg-deb --root-owner-group --build matrix-org-archive-keyring matrix-org-archive-keyring.deb
+dpkg-deb -Zxz --root-owner-group --build matrix-org-archive-keyring matrix-org-archive-keyring.deb
 
 for dist in $(ls -1 "packages.matrix.org/debian/dists")
 do
