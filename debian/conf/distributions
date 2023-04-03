@@ -125,3 +125,11 @@ Architectures: amd64 i386 source
 Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# lunar (23.04) reaches EOL in January 2024
+Origin: matrix.org
+Codename: lunar
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
