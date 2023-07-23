@@ -133,3 +133,11 @@ Architectures: amd64 i386 source
 Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# trixie (Debian 13) EOL not announced yet
+Origin: matrix.org
+Codename: trixie
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
