@@ -141,3 +141,11 @@ Architectures: amd64 i386 source
 Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# mantic (Ubuntu 23.10) reaches EOL in July 2024
+Origin: matrix.org
+Codename: mantic
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal

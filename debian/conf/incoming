@@ -1,4 +1,4 @@
 Name: incoming
 IncomingDir: incoming
 TempDir: tmp
-Allow: stretch buster bullseye bookworm sid xenial bionic cosmic disco eoan focal groovy hirsute impish jammy kinetic lunar trixie
+Allow: stretch buster bullseye bookworm sid xenial bionic cosmic disco eoan focal groovy hirsute impish jammy kinetic lunar trixie mantic
