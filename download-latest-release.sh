@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Downloads the Debian tarball from the latest Synapse release on GitHub
 # and extracts it into debian/incoming/.
