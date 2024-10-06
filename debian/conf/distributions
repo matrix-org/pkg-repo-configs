@@ -1,3 +1,11 @@
+# noble released 2024-04-25, EOL ~2029-05
+Origin: matrix.org
+Codename: noble
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
+
 # jammy released 2022-04-21, EOL ~2027-04
 Origin: matrix.org
 Codename: jammy
