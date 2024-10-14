@@ -149,3 +149,19 @@ Architectures: amd64 i386 source
 Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# noble (Ubuntu 23.04 LTS) reaches EOL in June 2029
+Origin: matrix.org
+Codename: noble
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
+
+# oracular (Ubuntu 23.10) reaches EOL in July 2025
+Origin: matrix.org
+Codename: oracular
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
