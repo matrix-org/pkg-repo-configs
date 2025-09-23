@@ -165,3 +165,11 @@ Architectures: amd64 i386 source
 Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# plucky (Ubuntu 25.04) reaches EOL in January 2026
+Origin: matrix.org
+Codename: plucky
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
