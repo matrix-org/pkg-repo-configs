@@ -173,3 +173,11 @@ Architectures: amd64 i386 source
 Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# questing (Ubuntu 25.10) reaches EOL in July 2026
+Origin: matrix.org
+Codename: questing
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
