@@ -181,3 +181,11 @@ Architectures: amd64 i386 source
 Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# resolute (Ubuntu 26.04) reaches EOL in April 2031 (Synapse will end support early in October 2030 due to Python 3.14 EOL)
+Origin: matrix.org
+Codename: resolute
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
