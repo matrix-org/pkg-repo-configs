@@ -189,3 +189,11 @@ Architectures: amd64 i386 source
 Components: main prerelease
 SignWith: F473DD4473365DE1
 Tracking: minimal
+
+# stonking (Ubuntu 26.10) reaches EOL after 2027-07-15
+Origin: matrix.org
+Codename: stonking
+Architectures: amd64 i386 source
+Components: main prerelease
+SignWith: F473DD4473365DE1
+Tracking: minimal
